@@ -1,0 +1,148 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+<main class="main-element">
+  <section class="main-page flex-main-page">
+    
+    {% include 'vertical_navigation.html' %} 
+
+    <div class="template">
+      
+      {% include 'messages.html' %}
+
+      <img src="{% static 'images/home.jpg' %}" alt="img" class="home-image">
+      <div class="venture-capitalists">
+        <h1>With</h1>
+        <h1><span class="green">Campus</span>Crowd</h1>
+        <h1>The Faculty and your</h1>
+        <h1>mates are your</h1>
+        <h1 class="green">Venture Capitalists</h1>
+
+        <p class="learn-more">Learn more</p>
+      </div>
+
+      <p class="ongoing-campaigns">ONGOING <span class="green">CAMPAIGNS</span></p>
+
+      <div class="campaigns">
+
+        {% for project_data in projects_data %}
+
+        <div class="the-campaign">
+          <div>
+            <a href="{% url 'campaign' project_data.project.id %}">
+              <img src="{{ project_data.project.project_image.url }}" alt="image" class="campaign-image">
+            </a>
+            <div class="project-texts">
+              <div class="project-details">
+                <a href="{% url 'campaign' project_data.project.id %}">
+                  <span>
+                  <h3 class="project-name">{{ project_data.project.project_title }}</h3>
+                  <h5 class="project-desc">{{ project_data.project.brief_description }}</h5>
+                  </span>
+                </a>
+
+                {% if request.user.is_authenticated %}
+                <button class="like-button" id="like-button" data-project-id="{{ project_data.project.id }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" class="{{ project_data.project.id }} {% if project_data.project.id in liked_projects %} liked-icon {% endif %}">
+                    <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                  </svg>
+                  <span class="likes-count" id="{{project_data.project.id}}">{{ project_data.project.project_stars }}</span>
+                  <!-- <span class="likes-count">{{ project_data.project.likes }}</span> -->
+                </button>
+                {% else %}
+                <button class="flex-btn">
+                  {% if project_data.project.project_stars > 0 %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#00FF66">
+                    <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                  </svg>
+                  {% else %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                  </svg>
+                  {% endif %}
+                  <span class="likes-count" id="{{project_data.project.id}}">{{ project_data.project.project_stars }}</span>
+                  <!-- <span class="likes-count">{{ project_data.project.likes }}</span> -->
+                </button>
+                {% endif %}
+              </div>
+            
+              <a href="{% url 'campaign' project_data.project.id %}">
+                <div class="secod-div">
+                  <div class="project-owner-details">
+                    <img src="{{ project_data.project.project_owner.profile_image.url }}" alt="image" class="project-owner-image">
+                    <span class="name-description">
+                      <h5>{{ project_data.project.project_owner.user.first_name }} {{ project_data.project.project_owner.user.last_name }}</h5>
+                      <p>{{ project_data.project.project_owner.programme_of_study }}</p>
+                      <p>{{ project_data.project.project_owner.abbreviation_of_institution }}</p>
+                    </span>
+                  </div>
+  
+                  <span>
+                    <h2>{{ project_data.percentage_funded|floatformat:0 }}%</h2>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: {{ project_data.percentage_funded|floatformat:0 }}%;"></div>
+                    </div>
+                    <p class="the-ps">Funded</p>
+                  </span>
+                </div>
+              </a>
+  
+              <a href="{% url 'campaign' project_data.project.id %}">
+                <div class="last-div">
+                  <span>
+                    <span class="lg">GHC</span>
+                    <h2 class="inline">{{ project_data.project.amount_raised }}</h2>
+                    <p class="the-ps">Raised</p>
+                  </span>
+  
+                  <span class="perker-counts">
+                    {% if project_data.payment_count == 1 %}
+                    <h2> {{ project_data.payment_count }} </h2>
+                    <p class="the-ps">Perker</p>
+                    {% else %}
+                    <h2> {{ project_data.payment_count }} </h2>
+                    <p class="the-ps">Perkers</p>
+                    {% endif %}
+                  </span>
+  
+                  <span>
+                    <h2>{{ project_data.project.target_funding_period_in_days }}</h2>
+                    <p class="the-ps">Days Left</p>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>   
+               
+        </div>
+
+        {% endfor %}
+        
+      </div>
+      
+      <div class="why-campus-crowd-container">
+        <p class="ongoing-campaigns why-campus-crowd">WHY CAMPUS<span class="green">CROWD?</span></p>
+        <P>Finding the money and the right team members as a student to bring your life-changing
+          project into the spectrum can be quite challenging. It is rather unfortunate that there
+          aren’t enough venture capitalists or any form of reliable traditional funding
+          opportunities for students which has crippled a lot of brilliant ideas.
+          <br><br>
+          Moreover, heavy interest rates on Bank loans makes it an-out-of-scope option for
+          students looking for funds to bring their projects or startups to live
+          <br><br>
+          This where CampusCrowd comes in, We create an ecosystem of like-minds, people who provide both financial and technical support for your project.
+          <br><br>
+          Instead of counting on a one time big supporter, we focus on measured+ support
+          call PERKS from your friends, course mates, loved ones, the Staff and others who show
+          interest in your vision
+        </P>
+      </div>
+
+    </div> 
+
+  </section>
+</main>
+
+{% endblock content %}

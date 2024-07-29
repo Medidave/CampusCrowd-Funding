@@ -1,0 +1,189 @@
+{% extends 'main.html' %}
+
+
+{% load static %}
+
+
+{% block content %}
+
+<main class="main-element">
+    <section class="main-page">
+        <div class="main-page-container events-single">
+            <div class="single-page-content">
+
+                <div class="CHAT-ROOM-CHAT">
+                    <div class="CHAT-ROOM">
+                        <div class="rooms-available">
+                            <div class="flex-it-on-mobile">
+                                <h3>EPSU-KNUST CHAT ROOM <span class="show-when-small">:</span></h3>
+                                {% if not topic_to_search %}
+                                    {% if room_count == 1 %}
+                                        <p class="make-black">({{ room_count }}) room available</p>
+                                    {% else %}
+                                        <p class="make-black">({{ room_count }}) rooms available</p>
+                                    {% endif %}
+                                {% else %}
+                                    {% if room_count == 1 %}
+                                        <p class="make-black">({{ room_count }}) room found</p>
+                                    {% else %}
+                                        <p class="make-black">({{ room_count }}) rooms found</p>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+
+                            <form id="search-form" action="" method="POST" class="search-forn-one">
+                                {% csrf_token %}
+                                <input type="search" name="search-rooms" id="search-input" placeholder="Search room by topic eg. Faith... or host name eg. David..." class="the-topic-search-input">
+                            </form>
+                        </div>
+
+
+                        {% for room in rooms %}
+                        <div class="the-rooms">
+                            <div class="room-host-details">
+                                <span class="host-image-username remove-that-margin">
+                                    <img src="{{room.host.profile_image.url}}" alt="image" class="room-host-image">                       
+                                    <h5>{{ room.host.name }}</h5>
+                                </span>
+                                <h5>{{room.created|timesince}} ago</h5>
+                            </div>
+
+                            <div class="room-title">
+                                <a href="{% url 'church-chat-room' room.id %}">
+                                    {{room.project.project_title}}
+                                </a>
+                            </div>
+                            <hr class="hr-class">
+
+
+                            <div class="room-name-container">
+                                <span class="participants counts-participants">
+                                    <i class="ri-team-line"></i>
+                                    {{room.participants.all.count}}
+                                </span>
+
+                                <!-- <p class="room-name">{{ room.name }}</p> -->
+                                <a href="{% url 'church-chat-room' room.id%}"><p class="room-name">Join room</p></a>
+
+                            </div>
+                        </div>
+
+                        {% endfor %}
+
+                        {% if has_rooms == False %}
+                        <div class="display-the-image-when-no-search-found">
+                            <img src="{% static 'images/no-search.jpeg' %}" alt="img" class="no-search-image">
+                            <p>Sorry {{request.user.first_name}}, our database for the church chat-room has no topic or host name {{topic_to_search}}. Try searching with a diffrent topic or host name.</p>
+                        </div>
+                        {% endif %}
+
+                        <!-- <div class="the-rooms">
+                            <div class="room-host-details">
+                                <span class="host-image-username">
+                                    <img src="{% static 'images/organa/dave.jpg' %}" alt="room host image" class="room-host-image">
+                                    <h5>@DAVE_THE_CEO</h5>
+                                </span>
+                                <h5>5 years, 3weeks</h5>
+                            </div>
+
+                            <div class="room-title">
+                                <p>THIS IS DAVE THE CEO! YES I AM DAVE THE CEO YES I AM DAVE THE CEO</p>
+                            </div>
+                            <hr class="hr-class">
+
+
+                            <div class="room-name-container">
+                                <span class="participants">
+                                    <i class="ri-team-line"></i>
+                                    <p>100</p>
+                                </span>
+
+                                <p class="room-name">Church chat and Dave</p>
+                            </div>
+                        </div>
+
+                        <div class="the-rooms">
+                            <div class="room-host-details">
+                                <span class="host-image-username">
+                                    <img src="{% static 'images/organa/dave.jpg' %}" alt="room host image" class="room-host-image">
+                                    <h5>@DAVE_THE_CEO</h5>
+                                </span>
+                                <h5>5 years, 3weeks</h5>
+                            </div>
+
+                            <div class="room-title">
+                                <p>THIS IS DAVE THE CEO! YES I AM DAVE THE CEO YES I AM DAVE THE CEO</p>
+                            </div>
+                            <hr class="hr-class">
+
+
+                            <div class="room-name-container">
+                                <span class="participants">
+                                    <i class="ri-team-line"></i>
+                                    <p>100</p>
+                                </span>
+
+                                <p class="room-name">Church chat and Dave</p>
+                            </div>
+                        </div>
+
+                        <div class="the-rooms">
+                            <div class="room-host-details">
+                                <span class="host-image-username">
+                                    <img src="{% static 'images/organa/dave.jpg' %}" alt="room host image" class="room-host-image">
+                                    <h5>@DAVE_THE_CEO</h5>
+                                </span>
+                                <h5>5 years, 3weeks</h5>
+                            </div>
+
+                            <div class="room-title">
+                                <p>THIS IS DAVE THE CEO! YES I AM DAVE THE CEO YES I AM DAVE THE CEO</p>
+                            </div>
+                            <hr class="hr-class">
+
+
+                            <div class="room-name-container">
+                                <span class="participants">
+                                    <i class="ri-team-line"></i>
+                                    <p>100</p>
+                                </span>
+
+                                <p class="room-name">Church chat and Dave</p>
+                            </div>
+                        </div>
+
+                        <div class="the-rooms">
+                            <div class="room-host-details">
+                                <span class="host-image-username">
+                                    <img src="{% static 'images/organa/dave.jpg' %}" alt="room host image" class="room-host-image">
+                                    <h5>@DAVE_THE_CEO</h5>
+                                </span>
+                                <h5>5 years, 3weeks</h5>
+                            </div>
+
+                            <div class="room-title">
+                                <p>THIS IS DAVE THE CEO! YES I AM DAVE THE CEO YES I AM DAVE THE CEO</p>
+                            </div>
+                            <hr class="hr-class">
+
+
+                            <div class="room-name-container">
+                                <span class="participants">
+                                    <i class="ri-team-line"></i>
+                                    <p>100</p>
+                                </span>
+
+                                <p class="room-name">Church chat and Dave</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+{% endblock content %}

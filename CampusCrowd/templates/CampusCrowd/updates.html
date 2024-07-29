@@ -1,0 +1,146 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+  <section class="main-page flex-main-page">
+    
+    {% include 'vertical_navigation.html' %}
+
+    <div class="template">
+
+        {% include 'messages.html' %}
+
+        
+        <div class="campaign-demo-container">
+            {% if project.project_short_demo_video %}
+            <iframe src="{{ project.project_short_demo_video.url }}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% else %}
+            <iframe src="{% static 'images/project_videos/vid2.mp4' %}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% endif %}   
+            <span class="project-info">
+                <h1 class="project-info-h1">{{ project.project_title }}</h1>
+                <h3 class="project-info-h3">{{ project.brief_description }}</h3>
+
+                <span class="amount-and-perks-container">
+                    <span class="amount">
+                        <span class="cedis">
+                            <!-- <img src="{% static 'images/cedi1.png' %}" alt="img" class="cedi"> -->
+                             <h1>GHC</h1>
+                            <h1>{{ project.amount_raised|floatformat:2 }}</h1>
+                        </span>
+                        <P>of {{ project.project_target_amount }} raised</P>
+                        
+                    </span>
+
+                    <span class="number-of-perkers">
+                        {% if payment_count == 1 %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donor</p>
+                        {% else %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donors</p>
+                        {% endif %}
+                    </span>
+                </span>
+
+                <span class="amount-and-perks-container logics">
+                    <span class="svg-and-timer">
+                        <i class="ri-time-line"></i>
+                        <p>{{ project.target_funding_period_in_days }} days more</p>
+                    </span>
+
+                    <span>
+                        <h1>{{ percentage_funded|floatformat:0 }}%</h1>
+                          <div class="progress-bar-container actual-projects">
+                            <div class="progress-bar" style="width: {{ percentage_funded|floatformat:0 }}%;"></div>
+                        </div>
+                        <p class="the-ps">Funded</p>
+                      </span>
+                </span>
+
+                <a href="{% url 'initiate' project.id %}">
+                    <h1 class="send-a-perk">SUPPORT PROJECT</h1>
+                </a>
+
+            </span>
+        </div>
+
+        <div class="main-project-content-container">
+            
+            <div class="project-nav">
+                <a href="{% url 'campaign' project.id %}"><p class="Campaign">CAMPAIGN</p></a>
+                <a href="{% url 'perks' project.id %}"><p class="Perks">PERKS</p></a>
+                <a href="{% url 'updates' project.id %}"><p class="Updates">UPDATES</p></a>
+                <span>
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat desktop">CHAT FORUM</p></a>    
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat1 mobile">CHAT</p></a>    
+                </span>                    
+                <a href="{% url 'hints' project.id %}"><p class="FAQs">SUGGESTIONS</p></a>
+            </div>
+
+            </div>
+            <div class="project-updates">
+
+                <div class="the-update-container">
+                    {% if project.project_owner.user == request.user %}
+                        <span class="perked-detail">
+                            <img src="{{ project.project_owner.profile_image.url }}" alt="image" class="project-owner-image for-updates-image">
+                            <span>
+                                <h3>{{ project.project_owner.user.first_name }} {{ project.project_owner.user.last_name }}</h3>
+                                <p>{{ project.project_owner.programme_of_study }}</p>
+                                <p>{{ project.project_owner.abbreviation_of_institution }}</p>
+    
+                                {% if project.has_update %}
+                                <a href="{% url 'updateProject' project.id %}"  class="write">
+                                    <p>Edit update</p>
+                                </a>
+                                {% else %}
+                                <a href="{% url 'createProject' project.id %}"  class="write">
+                                    <p>Write update</p>
+                                </a>
+                                {% endif %}
+                            </span>
+                        </span>
+                    {% else %}
+                    <a href="{% url 'view_profile' project.project_owner.id %}">
+                        <span class="perked-detail">
+                            <img src="{{ project.project_owner.profile_image.url }}" alt="image" class="project-owner-image for-updates-image">
+                            <span>
+                                <h3>{{ project.project_owner.user.first_name }} {{ project.project_owner.user.first_name }}</h3>
+                                <p>{{ project.project_owner.programme_of_study }}</p>
+                                <p>{{ project.project_owner.abbreviation_of_institution }}</p>
+                            
+                            </span>
+                        </span>
+
+                    </a>
+
+                    {% endif %}
+
+
+                    <span class="dates-update">
+                        {% if project.has_update %}
+                        <h3>UPDATE <span class="dd">{{ update.update_number }}</span></h3>
+                        <p>{{ update.updated|date:"jS F Y"}}.</p>
+                        <p>{{update.updated|time:"g:iA"}}.</p>
+                        {% endif %}
+                    </span>
+                </div>
+
+                <h1 class="update-title">{{ update.title }}</h1>
+                {% if project.has_update %}
+                <p class="mar">{{ update.update|linebreaksbr }}</p>
+                {% else %}
+                <p class="mar">NOT YET UPLOADED!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+  </section>
+</main>
+
+{% endblock content %}

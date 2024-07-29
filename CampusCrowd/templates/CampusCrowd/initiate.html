@@ -1,0 +1,77 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% load socialaccount %}
+
+{% block content %}
+
+<main class="main-element">
+  <section class="main-page flex-main-page login-log-out">
+    
+    {% include 'vertical_navigation.html' %}
+
+    <div class="template temp1">       
+        
+        <p class="join ideas">Support the project "{{ project.project_title }}" to help propel it towards success.</p>
+
+        {% include 'form-messages.html' %}
+        {% include 'messages.html' %}
+        
+        <!-- <form action="{% url 'account_login' %}" method="POST" class="login-form"> NOTE THIS IS FOR ALLAUTH AUTHENTICATION -->
+            <form action="" method="POST" class="login-form">
+            {% csrf_token %}
+            <div class="login-container flex-donate-page donations1">
+                <img src="{% static 'images/donate.png' %}" alt="image" class="rock">
+                <span class="the-logins">
+                    <span class="make-user-icon-flexed for-donate">
+                      <i class="ri-hand-heart-line"></i>
+                      <h3>DONATE</h3>
+                    </span>
+
+                    <div class="form-group donations">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control donations"  name="email" placeholder="Enter your email" required>
+                    </div>
+              
+                    <div class="form-group">
+                      <label for="amount">Amount:</label>
+                      <span>
+                          <input type="number" name="amount" id="amount" class="form-control donations" placeholder="Enter amount to donate" required>
+                      </span>      
+                    </div>
+
+                    {% if request.user.is_authenticated == False %}
+                    <div class="form-group">
+                      <label for="name">Name:</label>
+                      <span>
+                          <input type="text" name="name" id="name" class="form-control donations" placeholder=" Enter your name (optional)">
+                      </span>      
+                    </div>
+                    {% endif %}
+
+                    <label>
+                      <input type="checkbox" name="is_anonymous"> Donate anonymously
+                  </label>
+                    <!-- <button type="submit" class="btn btn-primary goggle-sign-in donate-btn">
+                      <p>Donate with</p>
+                        <img src="{% static 'images/paystack3.png' %}" alt="img" class="paystack">
+                    </button> -->
+
+                    <button type="submit" class="goggle-sign-in donate-btn">
+                      <p>Donate with</p>
+                        <img src="{% static 'images/pay.png' %}" alt="img" class="paystack">
+                    </button>
+                    
+
+                </span>
+            </div>
+        </form>
+
+    </div>
+
+  </section>
+</main>
+
+{% endblock content %}
+

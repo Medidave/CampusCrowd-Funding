@@ -1,0 +1,24 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+    <section class="main-page flex-main-page create-campaign">
+      
+      {% include 'vertical_navigation.html' %}
+  
+      <div class="templates">
+
+        <!-- templates/payment/success.html -->
+
+        <h1>Payment Successful</h1>
+        <p class="hi">Thank you for your donation of {{ payment.amount }} to the project {{ payment.project.project_title }}.</p>
+
+      </div>
+
+    </section>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+    <section class="main-page flex-main-page create-campaign">
+      
+      {% include 'vertical_navigation.html' %}
+  
+      <div class="templates">
+
+        <h1>Payment Failed</h1>
+        <p>{{ error }}</p>
+
+      </div>
+
+    </section>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,155 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+  <section class="main-page flex-main-page">
+    
+    {% include 'vertical_navigation.html' %}
+
+    <div class="template">
+        <div class="campaign-demo-container">
+            {% if project.project_short_demo_video %}
+            <iframe src="{{ project.project_short_demo_video.url }}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% else %}
+            <iframe src="{% static 'images/project_videos/vid2.mp4' %}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% endif %}            
+            <span class="project-info">
+                <h1 class="project-info-h1">{{ project.project_title }}</h1>
+                <h3 class="project-info-h3">{{ project.brief_description }}</h3>
+
+                <span class="amount-and-perks-container">
+                    <span class="amount">
+                        <span class="cedis">
+                            <!-- <img src="{% static 'images/cedi1.png' %}" alt="img" class="cedi"> -->
+                             <h1>GHC</h1>
+                            <h1>{{ project.amount_raised|floatformat:2 }}</h1>
+                        </span>
+                        <P>of {{ project.project_target_amount }} raised</P>
+                        
+                    </span>
+
+                    <span class="number-of-perkers">
+                        {% if payment_count == 1 %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donor</p>
+                        {% else %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donors</p>
+                        {% endif %}
+                    </span>
+                </span>
+
+                <span class="amount-and-perks-container logics">
+                    <span class="svg-and-timer">
+                        <i class="ri-time-line"></i>
+                        <p>{{ project.target_funding_period_in_days }} days more</p>
+                    </span>
+
+                    <span>
+                        <h1>{{ percentage_funded|floatformat:0 }}%</h1>
+                          <div class="progress-bar-container actual-projects">
+                            <div class="progress-bar" style="width: {{ percentage_funded|floatformat:0 }}%;"></div>
+                        </div>
+                        <p class="the-ps">Funded</p>
+                      </span>
+                </span>
+
+                <a href="{% url 'initiate' project.id %}">
+                    <h2 class="send-a-perk">SUPPORT PROJECT</h2>
+                </a>
+
+            </span>
+        </div>
+        <div class="main-project-content-container">
+            
+            <div class="project-nav">
+                <a href="{% url 'campaign' project.id %}"><p class="Campaign">CAMPAIGN</p></a>
+                <a href="{% url 'perks' project.id %}"><p class="Perks">PERKS</p></a>
+                <a href="{% url 'updates' project.id %}"><p class="Updates">UPDATES</p></a>
+                <span>
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat desktop">CHAT FORUM</p></a>    
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat1 mobile">CHAT</p></a>    
+                </span>                    
+                <a href="{% url 'hints' project.id %}"><p class="FAQs">SUGGESTIONS</p></a>
+            </div>
+
+            {% if payment %}
+            <span class="pass-fail">
+                <h1 class="">Payment Successful</h1>
+                <img src="{% static 'images/pass.png' %}" alt="img" class="pass">    
+            </span>
+            <p class="suc">Thank you for your donation of GHC {{ payment.amount }} to the project {{ payment.project.project_title }}.</p>
+            {% endif %}
+
+            {% if error %}
+            <span class="pass-fail">
+                <h1 class="">Payment Failed</h1>
+                <img src="{% static 'images/fail.png' %}" alt="img" class="pass">    
+            </span>
+            <p class="error">{{ error }}. Please consider supporting the project again taking into consideration the error message.</p>
+            {% endif %}
+
+            <div class="perks-container">
+                {% if payments %}
+                {% for payment in payments %}
+                <div class="a-perk">
+                    <span class="date-image-and-time">
+                        <span class="perked-detail">
+                            {% if payment.is_anonymous %}
+                            <img src="{% static 'images/profiles/user-default.png' %}" alt="image" class="project-owner-image">
+                            <span>
+                                <h3>Anonymous Donor</h3>
+                                <p>{{ payment.created_at|date:"jS F Y" }}</p>
+                                <p>{{ payment.created_at|time:"g:iA" }}</p>
+                            </span>
+                            {% else %}
+                            {% if payment.user %}
+                            <a href="{% url 'view_profile' payment.user.profile.id %}" class="perked-detail">
+                                <img src="{{ payment.user.profile.profile_image.url }}" alt="image" class="project-owner-image">
+                                <span>
+                                    <h3>{{ payment.user.first_name }} {{ payment.user.last_name }}</h3>
+                                    <p>{{ payment.created_at|date:"jS F Y" }}</p>
+                                    <p>{{ payment.created_at|time:"g:iA" }}</p>
+                                </span>
+                            </a>
+                            {% else %}
+                            <img src="{% static 'images/profiles/user-default.png' %}" alt="image" class="project-owner-image">
+                            <span>
+                                <h3>{{ payment.payer_name }}</h3>
+                                <p>{{ payment.created_at|date:"jS F Y" }}</p>
+                                <p>{{ payment.created_at|time:"g:iA" }}</p>
+                            </span>
+                            {% endif %}
+                            {% endif %}
+                        </span>
+    
+                        <span class="amount-perked">
+                            <h1>GHC{{ payment.amount|floatformat:0 }}</h1>
+                            <p>Perked</p>
+                        </span>
+                    </span>
+    
+                    {% if request.user == payment.project.project_owner.user %}
+                    <!-- <button class="send-mail say-thank-you" id="send-mail" data-payment-id="{{ payment.transaction_id }}"><p class="say-thank-you">SAY THANK YOU</p></button> -->
+                    <p class="say-thank-you">SAY THANK YOU</p>
+                    {% else%}
+                    <p class="say-thank-you">THANK YOU</p>
+                    {% endif %}
+
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>No donations are made for the project "{{ project.project_title }}".</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+  </section>
+</main>
+
+{% endblock content %}

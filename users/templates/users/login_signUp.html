@@ -1,0 +1,137 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% load socialaccount %}
+
+{% block content %}
+
+<main class="main-element">
+  <section class="main-page flex-main-page login-log-out">
+    
+    {% include 'vertical_navigation.html' %}
+
+    <div class="template temp1">
+        
+        <h1 class="join">LETS JOIN HANDS TO <span class="green">PROPEL</span> YOUR IDEAS TO <span class="green">SUCCESS</span></h1>
+
+        {% if action == 'sign_in' %}
+
+        <form action="#" method="#" class="login-form">
+            <div class="login-container">
+                <img src="{% static 'images/rock.png' %}" alt="image" class="rock">
+                <span class="the-logins">
+                    <span class="make-user-icon-flexed">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 40 40" fill="none">
+                            <path d="M30.9314 32.5814C29.2757 28.1529 25.006 25 20 25C14.9939 25 10.7243 28.1529 9.06859 32.5813M30.9314 32.5814C34.4452 29.5257 36.6666 25.0223 36.6666 20C36.6666 10.7952 29.2047 3.33331 20 3.33331C10.7952 3.33331 3.33331 10.7952 3.33331 20C3.33331 25.0223 5.55472 29.5257 9.06859 32.5813M30.9314 32.5814C28.0051 35.126 24.1824 36.6666 20 36.6666C15.8175 36.6666 11.9949 35.126 9.06859 32.5813M25 15C25 17.7614 22.7614 20 20 20C17.2386 20 15 17.7614 15 15C15 12.2386 17.2386 9.99998 20 9.99998C22.7614 9.99998 25 12.2386 25 15Z" stroke="#00FF66" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <h1>Log In</h1>
+                    </span>
+    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your student email">
+                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="reference_number">Reference Number:</label>
+                        <input type="number" class="form-control" id="reference_number" name="reference_number" placeholder="Enter your reference number">
+                    </div>
+                      
+                    <label for="password">Password:</label>
+                    <div class="form-group form-group-pass">
+                      <span>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                      </span>
+
+                      <span>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Repeat password">
+                      </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <p class="forgot-pass">Forgot Password?</p>
+                    <p class="question">Are you a Perker?</p>
+                    <a href="{% provider_login_url 'google' %}?next=/" class="goggle-sign-in">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="none">
+                            <g clip-path="url(#clip0_1_765)">
+                            <path d="M15.5988 17.8313V13.7325H29.41C29.545 14.4462 29.615 15.2913 29.615 16.2062C29.615 19.2812 28.775 23.0838 26.065 25.7925C23.43 28.5363 20.0638 30 15.6038 30C7.33626 30 0.38501 23.2663 0.38501 15C0.38501 6.73375 7.33626 0 15.6038 0C20.1775 0 23.435 1.795 25.8825 4.13375L22.99 7.025C21.235 5.37875 18.8563 4.09875 15.5988 4.09875C9.56251 4.09875 4.84126 8.96375 4.84126 15C4.84126 21.0362 9.56251 25.9013 15.5988 25.9013C19.5138 25.9013 21.7438 24.3287 23.1725 22.9C24.3313 21.7412 25.0938 20.0863 25.3938 17.8263L15.5988 17.8313Z" fill="#E61818"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_1_765">
+                            <rect width="30" height="30" fill="white"/>
+                            </clipPath>
+                            </defs>
+                        </svg>  
+                       <p>Sign in with Goggle</p>
+                    </a>
+
+                    <a href="{% url 'logout' %}" class="has-account-link">Log Out</a>
+                    <p class="already-has-account">Don't have an account?<a href="{% url 'signUp' %}" class="has-account-link">Sign Up</a></p>
+
+                </span>
+            </div>
+        </form>
+
+        {% else %}
+
+        <form action="#" method="#" class="login-form">
+            <div class="login-container">
+                <img src="{% static 'images/rock.png' %}" alt="image" class="rock">
+                <span class="the-logins">
+                    <span class="make-user-icon-flexed">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 40 40" fill="none">
+                            <path d="M30.9314 32.5814C29.2757 28.1529 25.006 25 20 25C14.9939 25 10.7243 28.1529 9.06859 32.5813M30.9314 32.5814C34.4452 29.5257 36.6666 25.0223 36.6666 20C36.6666 10.7952 29.2047 3.33331 20 3.33331C10.7952 3.33331 3.33331 10.7952 3.33331 20C3.33331 25.0223 5.55472 29.5257 9.06859 32.5813M30.9314 32.5814C28.0051 35.126 24.1824 36.6666 20 36.6666C15.8175 36.6666 11.9949 35.126 9.06859 32.5813M25 15C25 17.7614 22.7614 20 20 20C17.2386 20 15 17.7614 15 15C15 12.2386 17.2386 9.99998 20 9.99998C22.7614 9.99998 25 12.2386 25 15Z" stroke="#00FF66" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <h1>Sign Up</h1>
+                    </span>
+
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input class="form-control" id="first_name" name="first_name" placeholder="Enter your first name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input class="form-control" id="last_name" name="last_name" placeholder="Enter your student email">
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your student email">
+                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="reference_number">Reference Number:</label>
+                        <input type="number" class="form-control" id="reference_number" name="reference_number" placeholder="Enter your reference number">
+                    </div>
+                      
+                    <label for="password">Password:</label>
+                    <div class="form-group form-group-pass">
+                      <span>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                      </span>
+
+                      <span>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Repeat password">
+                      </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    
+                    <p class="already-has-account">Already have an account?<a href="{% url 'login' %}" class="has-account-link">Log In</a></p>
+
+                </span>
+            </div>
+        </form>
+        
+        {% endif %}
+
+
+    </div>
+
+  </section>
+</main>
+
+{% endblock content %}
+

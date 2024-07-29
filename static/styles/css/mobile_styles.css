@@ -1,0 +1,468 @@
+@media screen and (max-width: 576px) {
+    .hide-search-on-mobile {
+        display: none!important;
+    }
+
+    .horizontal-nav {
+        background-color: #022631;
+        height: 65px;
+        padding: 0 5px;
+    }
+
+    .header {
+        margin-bottom: 12px;
+    }
+
+    .donate {
+        background-color: #022631;
+        padding: 10px 15px;
+        border-radius: 10px;
+        color: #022631;
+    }
+
+    /* .mobile-log-out {
+    } */
+
+    .hide-on-desktop {
+        display: block;
+    }
+
+    .search-for-campaigns {
+        background-color: rgba(255, 255, 255, 0.30);
+        margin-top: 70px;
+        border-radius: 8px!important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .donate {
+        padding: unset;
+    }
+
+    .flex-main-page {
+        display: block;
+        background-color: unset!important;
+        margin-bottom: 15px;
+    } 
+
+    .template {
+        margin-left: unset;
+        padding: 0 10px;
+    }
+
+    .for-chats {
+        padding: unset!important;
+    }
+
+    .color {
+        display: inline;
+    }
+
+    .mobile-search-campaign {
+        color: #022631!important;
+        border-radius: 10px!important;
+
+    }
+
+    .mobile-search-campaign-cont {
+        background-color:#CECBCB;
+        margin-top: 20px;
+
+    }
+
+    .margin-span {
+        height: 5px;
+    }
+    
+    .project-info-h1,
+    .project-info-h3 {
+        color: #022631!important;
+
+    }
+
+    .mobile-search-campaign::placeholder,
+    .ri-search-line {
+        color: #022631!important;
+        opacity: 1; 
+    }
+
+    .flex-bobile-select-btns {
+        margin-right: unset!important;
+      }
+
+    .sortBy {
+      width: 150px;
+      height: 37px;
+      font-size: 1.5rem;
+    }
+
+    .sortBy option {
+        font-size: 1.5rem;
+        width: 150px;
+
+
+    }
+
+    .going {
+        display: block;
+        font-size: 1.5rem;
+    }
+
+    .campaigns {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .the-campaign {
+        width: 100%;
+    }
+
+    footer {
+        margin: unset;
+    }
+    
+    .bottom-navigation {
+        position: fixed;  
+        bottom: 0;         
+        left: 0;           
+        width: 100%;       
+        display: flex;    
+        justify-content: space-around; 
+        background-color: #f0f0f0;  
+        padding: 10px;  
+        background-color: #022631;   
+        height: 60px;
+        z-index: 999999999999999;
+    }
+
+    /* .svggg path {
+        stroke: var(--green); 
+        fill: #00FF66;
+    s
+    } */
+
+    .bottom-icon {
+        color: #00FF66!important;
+    }
+
+    .mobile-footer-svg {
+        width: 25px;
+    }
+
+    .svgg {
+        border-radius: unset;
+    }
+
+    .bottom-link {
+        padding-top: 8px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .vertical-nav-main {
+        display: none;
+    }
+
+    .login-container {
+        width: 100%;
+    }
+
+    .rock {
+        width: 100%;
+        height: 350px;
+    }
+
+    .the-logins {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .temp1 {
+        padding: 0 10px;
+    }
+
+
+    .login-container {
+        width: 100%;
+        padding: 5px;
+        /* gap: 20px; */
+        flex-direction: column;
+    }
+
+    .form-group-pass {
+        display: block;
+    }
+
+    .make-user-icon-flexed {
+        margin-left: 60%;
+    }
+
+    .man {
+        margin-left: 55%;
+    }
+
+    .goggle-sign-in {
+        padding: 5px 10px;
+        font-size: 1.4rem;
+    }
+    
+    .has-account-link {
+        margin-left: 5px;
+    }
+
+    .already-has-account {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+   
+    .home-image{
+        height: 320px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .venture-capitalists {
+        top: 1%;
+        left: 10%;
+        font-size: 1.6rem;
+        line-height: 30px;
+    }
+
+    .why-campus-crowd-container {
+        width: 100%;
+    }
+
+    .formPage .formWrapper {
+        width: 100%!important;
+      }
+
+    .texts {
+        font-size: 1.05rem;
+    }
+
+    .log {
+        font-size: 1.3rem;
+        color: white;
+    }
+
+    .flex-svg-and-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .the-active {
+        color: #00FF66;
+    }
+
+    .logs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 5px;
+        background-color: #022631;
+    }
+
+    /* A CAMPAIGN STYLES START HERE  */
+
+.campaign-demo-container {
+    height: unset;
+    padding: 0 8px 30px 8px;
+    margin-top: 30px;
+   
+}
+
+.iframe-size {
+    height: 250px;
+    width: 100%;
+    margin: unset;
+    margin-top: 28px;
+}
+
+.campaign-demo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    color: white;
+}
+
+.project-info {
+    margin: unset;
+    width: 100%;
+}
+
+.main-project-content-container {
+    padding: 0 2%;
+    padding: unset;
+}
+
+.chats-own {
+    padding: 8px 1% 0 1%;
+    margin-bottom: unset;
+
+}
+
+
+.project-nav {
+    gap: 3px;
+}
+
+.project-nav p{
+    padding: 8px;
+    font-size: 0.95rem;
+}
+
+.desktop {
+    display: none;
+}
+
+.mobile {
+    display: block!important;
+}
+
+/* THE STYLES FOR THE PERKS START HERE  */
+.perks-container {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.a-perk {
+    width: 100%;
+}
+
+.project-updates {
+    width: 100%;
+}
+
+.dates-update {
+    font-size: 1.1rem;
+}
+
+.the-update-container {
+    gap: 10px;
+}
+
+.account-details-container span{
+    flex-direction: column;
+    gap: 25px;
+}
+
+.account-project {
+    width: 100%;
+
+}
+
+.account-profil-and-bell {
+    gap: 10px;
+    font-size: 1.5rem;
+    margin: unset;
+    padding-top: 10px;
+    }
+    
+    .bell-icon {
+        width: 40px;
+    }
+
+    .edit-account {
+        padding: 6px 15px;
+        border-radius: 8px;
+        margin-right: 30px;
+    }
+
+    .dashboard-campaign-btns {
+        gap: 8px!important;
+        flex-direction: row!important;
+        padding-bottom: 20px;
+    }
+    
+    .dashboard-campaign-btns p{
+        padding: 6px 10px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+    }
+
+    .the-form {
+        width: 100%;
+        }
+
+    .flex-inputs {
+        display: block;
+        margin-left: unset;
+        margin-right: unset;
+        width: 100%;
+    
+        margin-bottom: 10px;
+    
+    }
+
+    .flex-inputs input,
+    .flex-inputs div {
+    width: 100%;
+    border-radius: 5px;
+
+}
+
+.select-cover-image {
+    gap: 15px;
+    margin-left: unset;
+}
+
+.the-textarea {
+    width: 100%;
+    margin: unset;
+    border-radius: 5px;
+
+}
+
+.lauch1 {
+    padding-top: 15px;
+    width: 100vw;
+
+}
+
+.haha {
+    overflow: hidden;
+}
+
+.lauch {
+    font-size: 1.5rem;
+    margin: unset;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-project {
+    width: 100%;
+    margin-left: unset;
+}
+
+.hahahha{
+    font-size: 1.8rem!important;
+}
+
+.join {
+    font-size: 2rem;
+    padding-top: 12px;
+
+}
+
+.update-title {
+    font-size: 2.1rem;
+}
+
+.for-updates-image {
+    width: 65px;
+    height: 65px;
+}
+
+
+}

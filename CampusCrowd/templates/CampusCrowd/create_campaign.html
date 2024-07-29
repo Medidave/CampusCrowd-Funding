@@ -1,0 +1,60 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element haha">
+    <section class="main-page flex-main-page create-campaign">
+      
+      {% include 'vertical_navigation.html' %}
+  
+      <div class="template lauch1">
+        <P class="lauch">LAUNCH YOUR CAMPAIGN <img src="{% static 'images/board.png' %}" alt="img"></P>
+
+        <form action="" method="POST" class="the-form" enctype="multipart/form-data"> 
+            {% csrf_token %} 
+           
+            <span class="flex-inputs">
+                <input type="text" id="projectTitle" class="create-create-campaign" name="project_title" required placeholder="Project Title" value="{{ project.project_title}}"><br>
+                <input type="text" id="description" class="create-create-campaign" name="brief_description" required placeholder="Brief description" value="{{ project.brief_description}}"><br>
+            </span>
+
+            <span class="flex-inputs">
+                <input type="number" id="target_amount" class="create-create-campaign" name="project_target_amount" required placeholder="Target amount" value="{{ project.project_target_amount }}"><br>
+                <input type="number" id="period" class="create-create-campaign" name="target_funding_period_in_days" required placeholder="Target funding period in days eg. 100 or 200 or 30" value="{{ project.target_funding_period_in_days }}"><br>
+            </span>
+
+            <textarea id="projectDescription" name="about_project" rows="15" required placeholder="Campaign Description" class="the-textarea">{{ project.about_project }}</textarea><br>
+        
+            <span class="flex-inputs">
+                <div class="image-upload">
+                    <label for="chat-image">
+                        <span class="select-cover-image">
+                            <i class="ri-image-add-line select-cover-image" ></i>
+                            <p class="hahahha">Select Project Cover Image</p>
+                        </span>
+                    </label>
+                    <input type="file" id="chat-image" name="project_image" accept="image/*" style="display: none;">
+                </div>
+                <div class="video-upload">
+                    <label for="chat-video">
+                        <span class="select-cover-image">
+                            <i class="ri-video-chat-line"></i>
+                            <p class="hahahha">Select Project Demo Video</p>
+                        </span>
+                    </label>
+                    <input type="file" id="chat-video" name="project_short_demo_video" accept="video/*" style="display: none;">
+                </div>
+            </span>
+            <button type="submit" class="submit-project">SUBMIT</button>
+
+          </form>
+       
+
+    </div>
+
+    </section>
+</main>
+
+{% endblock content %}

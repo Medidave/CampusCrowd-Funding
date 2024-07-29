@@ -1,0 +1,8 @@
+ <!-- MESSAGES  -->
+ {% if messages %}
+ {% for message in messages %}
+ <div class="alert message-alert alert-error" id="the=message-cont">
+     <p class="alert__message">{{message}}</p>
+ </div>
+ {% endfor %}
+ {% endif %}

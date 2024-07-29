@@ -1,0 +1,387 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+    <section class="main-page flex-main-page create-campaign">
+      
+      {% include 'vertical_navigation.html' %}
+  
+      <div class="templates">
+        
+      </div>
+
+    </section>
+</main>
+
+{% endblock content %}
+
+
+
+ <!-- <div class="the-campaign">
+          <a href="{% url 'campaign' %}">
+            <img src="{% static 'images/pro1.png' %}" alt="image" class="campaign-image">
+
+          <div class="project-texts">
+            <div class="project-details">
+              <span>
+                <h4 class="project-name">Visual Pro:</h4>
+                <h4 class="project-desc">A VR headset to aid the vision impaired</h4>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+  
+            <div class="secod-div">
+              <div class="project-owner-details">
+                <img src="{% static 'images/sam.jpg' %}" alt="image" class="project-owner-image">
+                <span class="name-description">
+                  <h5>David Awitor</h5>
+                  <p>College of Engineering</p>
+                  <p>KNUST</p>
+                </span>
+              </div>
+  
+              <span>
+                <h1>90%</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="77" height="10" viewBox="0 0 77 10" fill="none">
+                  <rect x="0.5" width="76" height="10" rx="5" fill="#022631"/>
+                  <rect x="0.5" width="44" height="10" rx="5" fill="#00FF66"/>
+                  </svg>
+                <p class="the-ps">Funded</p>
+              </span>
+            </div>
+  
+            <div class="last-div">
+              <span>
+                <span class="lg">GHC</span>
+                <h1 class="inline">10000.00</h1>
+                <p class="the-ps">Raised</p>
+              </span>
+  
+              <span>
+                <h1>78</h1>
+                <p class="the-ps">Perkers</p>
+              </span>
+  
+              <span>
+                <h1>28</h1>
+                <p class="the-ps">Days Left</p>
+              </span>
+            </div>
+          </div>
+          </a>
+          
+        </div>
+
+        <div class="the-campaign">
+          <a href="{% url 'campaign' %}">
+            <img src="{% static 'images/pro2.png' %}" alt="image" class="campaign-image">
+
+          <div class="project-texts">
+            <div class="project-details">
+              <span>
+                <h4 class="project-name">Adinkra:</h4>
+                <h4 class="project-desc">A local language translating humanoid robot</h4>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+  
+            <div class="secod-div">
+              <div class="project-owner-details">
+                <img src="{% static 'images/rashid.jpg' %}" alt="image" class="project-owner-image">
+                <span class="name-description">
+                  <h5>David Awitor</h5>
+                  <p>College of Engineering</p>
+                  <p>KNUST</p>
+                </span>
+              </div>
+  
+              <span>
+                <h1>90%</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="77" height="10" viewBox="0 0 77 10" fill="none">
+                  <rect x="0.5" width="76" height="10" rx="5" fill="#022631"/>
+                  <rect x="0.5" width="44" height="10" rx="5" fill="#00FF66"/>
+                  </svg>
+                <p class="the-ps">Funded</p>
+              </span>
+            </div>
+  
+            <div class="last-div">
+              <span>
+                <span class="lg">GHC</span>
+                <h1 class="inline">10000.00</h1>
+                <p class="the-ps">Raised</p>
+              </span>
+  
+              <span>
+                <h1>78</h1>
+                <p class="the-ps">Perkers</p>
+              </span>
+  
+              <span>
+                <h1>28</h1>
+                <p class="the-ps">Days Left</p>
+              </span>
+            </div>
+          </div>
+          </a>
+          
+        </div>
+
+        <div class="the-campaign">
+          <a href="{% url 'campaign' %}">
+            <img src="{% static 'images/neuwnatal.jpg' %}" alt="image" class="campaign-image">
+
+          <div class="project-texts">
+            <div class="project-details">
+              <span>
+                <h3 class="project-name">Neonatal Control System:</h3>
+                <h5 class="project-desc">A Neonatal Control System ensures optimal health monitoring for newborns in critical care</h5>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+  
+            <div class="secod-div">
+              <div class="project-owner-details">
+                <img src="{% static 'images/rashid.jpg' %}" alt="image" class="project-owner-image">
+                <span class="name-description">
+                  <h5>David Awitor</h5>
+                  <p>College of Engineering</p>
+                  <p>KNUST</p>
+                </span>
+              </div>
+  
+              <span>
+                <h1>90%</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="77" height="10" viewBox="0 0 77 10" fill="none">
+                  <rect x="0.5" width="76" height="10" rx="5" fill="#022631"/>
+                  <rect x="0.5" width="44" height="10" rx="5" fill="#00FF66"/>
+                  </svg>
+                <p class="the-ps">Funded</p>
+              </span>
+            </div>
+  
+            <div class="last-div">
+              <span>
+                <span class="lg">GHC</span>
+                <h1 class="inline">10000.00</h1>
+                <p class="the-ps">Raised</p>
+              </span>
+  
+              <span>
+                <h1>78</h1>
+                <p class="the-ps">Perkers</p>
+              </span>
+  
+              <span>
+                <h1>28</h1>
+                <p class="the-ps">Days Left</p>
+              </span>
+            </div>
+          </div>
+          </a>
+          
+        </div>
+
+        <div class="the-campaign">
+          <a href="{% url 'campaign' %}">
+            <img src="{% static 'images/notification.jpg' %}" alt="image" class="campaign-image">
+
+          <div class="project-texts">
+            <div class="project-details">
+              <span>
+                <h3 class="project-name">Notification service:</h3>
+                <h5 class="project-desc">A notification service to sends real-time alerts or updates to users via various channels.</h5>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+  
+            <div class="secod-div">
+              <div class="project-owner-details">
+                <img src="{% static 'images/sam.jpg' %}" alt="image" class="project-owner-image">
+                <span class="name-description">
+                  <h5>David Awitor</h5>
+                  <p>College of Engineering</p>
+                  <p>KNUST</p>
+                </span>
+              </div>
+  
+              <span>
+                <h1>90%</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="77" height="10" viewBox="0 0 77 10" fill="none">
+                  <rect x="0.5" width="76" height="10" rx="5" fill="#022631"/>
+                  <rect x="0.5" width="44" height="10" rx="5" fill="#00FF66"/>
+                  </svg>
+                <p class="the-ps">Funded</p>
+              </span>
+            </div>
+  
+            <div class="last-div">
+              <span>
+                <span class="lg">GHC</span>
+                <h1 class="inline">10000.00</h1>
+                <p class="the-ps">Raised</p>
+              </span>
+  
+              <span>
+                <h1>78</h1>
+                <p class="the-ps">Perkers</p>
+              </span>
+  
+              <span>
+                <h1>28</h1>
+                <p class="the-ps">Days Left</p>
+              </span>
+            </div>
+          </div>
+          </a>
+          
+        </div>
+
+        <div class="the-campaign">
+          <a href="{% url 'campaign' %}">
+            <img src="{% static 'images/sandbox.jpg' %}" alt="image" class="campaign-image">
+
+          <div class="project-texts">
+            <div class="project-details">
+              <span>
+                <h3 class="project-name">Sandbox:</h3>
+                <h5 class="project-desc">Sandbox: Controlled environment for testing, experimenting, and learning.</h5>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M12.541 4.08927C13.5469 1.97025 16.4531 1.97024 17.459 4.08926L19.1974 7.75147C19.5968 8.59294 20.3689 9.17617 21.262 9.31111L25.1492 9.89837C27.3983 10.2382 28.2964 13.1119 26.6689 14.7614L23.8561 17.612C23.2099 18.267 22.9149 19.2107 23.0675 20.1355L23.7315 24.1607C24.1157 26.4897 21.7645 28.2658 19.7528 27.1662L16.276 25.2658C15.4772 24.8291 14.5228 24.8291 13.724 25.2658L10.2472 27.1662C8.23549 28.2658 5.88428 26.4897 6.26848 24.1607L6.93249 20.1355C7.08505 19.2107 6.79014 18.267 6.14385 17.612L3.33109 14.7614C1.70358 13.1119 2.60166 10.2382 4.85083 9.89837L8.73797 9.31111C9.63111 9.17617 10.4032 8.59294 10.8026 7.75147L12.541 4.08927Z" stroke="#28303F" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+  
+            <div class="secod-div">
+              <div class="project-owner-details">
+                <img src="{% static 'images/dave1.jpg' %}" alt="image" class="project-owner-image">
+                <span class="name-description">
+                  <h5>David Awitor</h5>
+                  <p>College of Engineering</p>
+                  <p>KNUST</p>
+                </span>
+              </div>
+  
+              <span>
+                <h1>70%</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="77" height="10" viewBox="0 0 77 10" fill="none">
+                  <rect x="0.5" width="76" height="10" rx="5" fill="#022631"/>
+                  <rect x="0.5" width="44" height="10" rx="5" fill="#00FF66"/>
+                  </svg>
+                <p class="the-ps">Funded</p>
+              </span>
+            </div>
+  
+            <div class="last-div">
+              <span>
+                <span class="lg">GHC</span>
+                <h1 class="inline">98585.00</h1>
+                <p class="the-ps">Raised</p>
+              </span>
+  
+              <span>
+                <h1>78</h1>
+                <p class="the-ps">Perkers</p>
+              </span>
+  
+              <span>
+                <h1>28</h1>
+                <p class="the-ps">Days Left</p>
+              </span>
+            </div>
+          </div>
+          </a>
+          
+        </div> -->
+
+
+
+
+        
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+    <section class="main-page flex-main-page create-campaign">
+      
+      {% include 'vertical_navigation.html' %}
+  
+      <div class="template">
+        <section class="formPage my-xl">
+
+            <div class="content-box">
+                <div class="formWrapper">
+                    <!-- <a class="backButton1" href="{% url 'dashboard' %}"><i class="ri-arrow-left-circle-fill"></i></a> -->
+
+                    <div class="auth__header text-center reset-pass-logo-and-text-flexed">
+                        <img src="{% static 'images/camp3.png' %}" alt="icon" class="reset-password-image" />
+                        <h2>CampusCrowd</h2>
+                    </div>
+                
+                    <form class="form profile-form" method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %} 
+                        {% if profile %}
+                        <label for="first_name" class="namel">First Name:</label>
+                        <input type="text" id="first_name" class="names" name="first_name" value="{{ request.user.first_name}}">
+                        <label for="last_name" class="namel">Last Name:</label>
+                        <input type="text" id="last_name" class="names" name="last_name" value="{{ request.user.last_name }}">
+                        <label for="email" class="namel">Email:</label>
+                        <input type="email" id="email" class="names" name="email" value="{{ request.user.email }}">
+
+                        {% for field in form %}
+
+                        {% for error in field.errors %}
+                            <p style="color: red">{{error}}</p>
+                        {% endfor %}
+
+                        <div class="form__field">
+                            <Label for="formInput#text">{{field.label}}</Label>
+                            {{field}}
+                        </div>
+
+                        {% endfor %}   
+                        {% else %}
+                        {% for error in field.errors %}
+                        <p style="color: red">{{error}}</p>
+                    {% endfor %}
+
+                    <div class="form__field">
+                    <Label for="formInput#text">Update Title</Label>
+                    <input type="text" class="form-control" id="text" name="title" aria-describedby="emailHelp" placeholder="Enter your student email" value="{{ project_to_update.title }}">
+                    
+                    <Label for="formInput#text">Update</Label>
+                    <textarea name="update" name="update" rows="20" placeholder="About the update">{{ project_to_update.update }}</textarea>
+
+                    <Label for="formInput#text">Update Number</Label>
+                    <input type="number" class="form-control dave" id="email" name="number" aria-describedby="emailHelp" placeholder="example 01" value="{{ project_to_update.update_number }}">
+          
+                    {% endif %}
+
+                 
+                    </div>
+                    
+                        <input class="btn1 btn1--sub btn1--lg  my-md" type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div>
+        </section>
+      </div>
+
+    </section>
+</main>
+
+{% endblock content %}

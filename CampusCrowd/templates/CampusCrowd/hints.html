@@ -1,0 +1,129 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+  <section class="main-page flex-main-page">
+    
+    {% include 'vertical_navigation.html' %}
+
+    <div class="template nn">
+
+        {% include 'messages.html' %}
+
+        
+        <div class="campaign-demo-container">
+            {% if project.project_short_demo_video %}
+            <iframe src="{{ project.project_short_demo_video.url }}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% else %}
+            <iframe src="{% static 'images/project_videos/vid2.mp4' %}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% endif %}               
+            <span class="project-info">
+                <h1 class="project-info-h1">{{ project.project_title }}</h1>
+                <h3 class="project-info-h3">{{ project.brief_description }}</h3>
+
+                <span class="amount-and-perks-container">
+                    <span class="amount">
+                        <span class="cedis">
+                            <!-- <img src="{% static 'images/cedi1.png' %}" alt="img" class="cedi"> -->
+                             <h1>GHC</h1>
+                            <h1>{{ project.amount_raised|floatformat:2 }}</h1>
+                        </span>
+                        <P>of {{ project.project_target_amount }} raised</P>
+                        
+                    </span>
+
+                    <span class="number-of-perkers">
+                        {% if payment_count == 1 %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donor</p>
+                        {% else %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donors</p>
+                        {% endif %}
+                    </span>
+                </span>
+
+                <span class="amount-and-perks-container logics">
+                    <span class="svg-and-timer">
+                        <i class="ri-time-line"></i>
+                        <p>{{ project.target_funding_period_in_days }} days more</p>
+                    </span>
+
+                    <span>
+                        <h1>{{ percentage_funded|floatformat:0 }}%</h1>
+                          <div class="progress-bar-container actual-projects">
+                            <div class="progress-bar" style="width: {{ percentage_funded|floatformat:0 }}%;"></div>
+                        </div>
+                        <p class="the-ps">Funded</p>
+                      </span>
+                </span>
+
+                <a href="{% url 'initiate' project.id %}">
+                    <h1 class="send-a-perk">SUPPORT PROJECT</h1>
+                </a>
+
+            </span>
+        </div>
+
+        <div class="main-project-content-container">
+            
+            <div class="project-nav">
+                <a href="{% url 'campaign' project.id %}"><p class="Campaign">CAMPAIGN</p></a>
+                <a href="{% url 'perks' project.id %}"><p class="Perks">PERKS</p></a>
+                <a href="{% url 'updates' project.id %}"><p class="Updates">UPDATES</p></a>
+                <span>
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat desktop">CHAT FORUM</p></a>    
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat1 mobile">CHAT</p></a>    
+                </span>                    
+                <a href="{% url 'hints' project.id %}"><p class="FAQs">SUGGESTIONS</p></a>
+            </div>
+
+            </div>
+            <div class="project-updates loop-suggestions1">
+
+                <div class="loop-suggestions">
+                    {% for suggestion in suggestions %}
+                    <div class="suggestions-container">
+                        <span class="suggestions">
+                            {% if suggestion.user.profile.profile_image %}
+                            <img src="{{ suggestion.user.profile.profile_image.url }}" alt="img" class="room-host-image image-image">
+                            {% else %}
+                            <img src="https://epsu-knust-s3-bucket.s3.eu-north-1.amazonaws.com/profiles/user-default.png" alt="img" class="room-host-image image-image">
+                            {% endif %}
+                            <span class="hint-names">
+                                    {% if suggestion.user %}
+                                    <h2 class="">{{ suggestion.user.first_name }} {{ suggestion.user.last_name }}</h2>
+                                    {% else %}
+                                    <h2 class="">Anonymous</h2>
+                                    {% endif %}
+                                    <p class="green">{{ suggestion.created_at|timesince }} ago</p>
+                            </span>
+                        </span>
+                        <p>{{ suggestion.content }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            
+                <form action="" method="POST" class="the-forms">
+                    {% csrf_token %}
+                    <p class="hint-questions">Have any suggestions for the project {{ project.project_title }}?</p>               
+                    <textarea name="message" rows="15" cols="30" placeholder="Type it here..." class="textarea wild" id="suggestion-content" required></textarea>
+                    <br><br>
+                    <span class="sub11 green"> 
+                        <button class="suggestions-btn" data-project-id="{{ project.id }}">SEND</button>
+                    </span>
+                </form>
+                  
+                
+            </div>
+        </div>
+    </div>
+
+  </section>
+</main>
+
+{% endblock content %}

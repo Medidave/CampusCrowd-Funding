@@ -1,0 +1,154 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+  <section class="main-page flex-main-page">
+    
+    {% include 'vertical_navigation.html' %}
+
+    <div class="template temp1">
+        <div class="campaign-demo-container">
+            {% if project.project_short_demo_video %}
+            <iframe src="{{ project.project_short_demo_video.url }}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% else %}
+            <iframe src="{% static 'images/project_videos/vid2.mp4' %}" class="iframe-size" allow="autoplay 'none'" autoplay="0" autostart="false"></iframe>
+            {% endif %}
+            <span class="project-info">
+                <h1 class="project-info-h1">{{ project.project_title }}</h1>
+                <p class="project-info-h3">{{ project.brief_description }}</p>
+
+                <span class="amount-and-perks-container">
+                    <span class="amount">
+                        <span class="cedis">
+                            <!-- <img src="{% static 'images/cedi1.png' %}" alt="img" class="cedi"> -->
+                             <h1>GHC</h1>
+                            <h1>{{ project.amount_raised|floatformat:2 }}</h1>
+                        </span>
+                        <P>of {{ project.project_target_amount }} raised</P>
+                        
+                    </span>
+
+                    <span class="number-of-perkers">
+                        {% if payment_count == 1 %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donor</p>
+                        {% else %}
+                        <h1>{{ payment_count }}</h1>
+                        <p>Donors</p>
+                        {% endif %}
+                    </span>
+                </span>
+
+                <span class="amount-and-perks-container logics">
+                    <span class="svg-and-timer">
+                        <i class="ri-time-line"></i>
+                        <p>{{ project.target_funding_period_in_days }} days more</p>
+                    </span>
+
+                    <span>
+                        <h1>{{ percentage_funded|floatformat:0 }}%</h1>
+                          <div class="progress-bar-container actual-projects">
+                            <div class="progress-bar" style="width: {{ percentage_funded|floatformat:0 }}%;"></div>
+                        </div>
+                        <p class="the-ps">Funded</p>
+                      </span>
+                </span>
+
+                <a href="{% url 'initiate' project.id %}">
+                    <h2 class="send-a-perk">SUPPORT PROJECT</h2>
+                </a>
+
+            </span>
+        </div>
+
+        <div class="main-project-content-container">
+
+            <div class="project-nav">
+                <a href="{% url 'campaign' project.id %}"><p class="Campaign">CAMPAIGN</p></a>
+                <a href="{% url 'perks' project.id %}"><p class="Perks">PERKS</p></a>
+                <a href="{% url 'updates' project.id %}"><p class="Updates">UPDATES</p></a>
+                <span>
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat desktop">CHAT FORUM</p></a>    
+                    <a href="{% url 'church-chat-room' project.id %}"><p class="Chat1 mobile">CHAT</p></a>    
+                </span>                    
+                <a href="{% url 'hints' project.id %}"><p class="FAQs">SUGGESTIONS</p></a>
+            </div>
+
+            <div class="project-description">
+                <!-- <h1>About Campaign</h1> -->
+                <h1 class="project-info-h1">{{ project.project_title }}</h1>
+                <p>{{ project.about_project|linebreaksbr  }}</p>
+
+                {% if project_detail %}
+                {% if project_detail.problem_statment %}
+                <h1 class="margins">Problem Statement</h1>
+                <p>{{ project_detail.problem_statment|linebreaksbr  }}</p>
+                {% endif %}
+
+                {% if project_detail.proposed_solution %}
+                <h1 class="margins">Proposed Solution</h1>
+                <p>{{ project_detail.proposed_solution|linebreaksbr  }}</p>
+                {% endif %}
+
+                {% if project_detail.market %}
+                <h1 class="margins">Market</h1>
+                <p>{{ project_detail.market|linebreaksbr  }}</p>
+                {% endif %}
+
+                {% if project_detail.competition %}
+                <h1 class="margins">Competition</h1>
+                <p>{{ project_detail.competition|linebreaksbr  }}</p>
+                {% endif %}
+
+                {% if project_detail.Why_you %}
+                <h1 class="margins">Why Us?</h1>
+                <p>{{ project_detail.Why_you|linebreaksbr  }}</p>
+                {% endif %}
+
+                {% if project_detail.financing %}
+                <h1 class="margins">Financing</h1>
+                <p>{{ project_detail.financing|linebreaksbr  }}</p>
+                {% endif %}
+                {% endif %}
+            </div>
+
+            <div class="view-profile">
+                <h1>CAMPAIGN MANAGER</h1>
+                {% if request.user != project.project_owner.user %}
+                <a href="{% url 'view_profile' project.project_owner.id %}">
+                    <span class="perked-detail">
+                        <img src="{{ project.project_owner.profile_image.url }}" alt="image" class="project-owner-image for-updates-image">
+                        <span>
+                            <h3>{{ project.project_owner.user.first_name }} {{ project.project_owner.user.last_name }}</h3>
+                            <p>{{ project.project_owner.programme_of_study }}</p>
+                            <p>{{ project.project_owner.abbreviation_of_institution }}</p>
+                            <p class="the-view">View {{ project.project_owner.user.first_name }}'s Profile</p>                    
+                        </span>
+                    </span>
+                </a>
+                {% else %}
+                <span class="perked-detail">
+                    <img src="{{ project.project_owner.profile_image.url }}" alt="image" class="project-owner-image for-updates-image">
+                    <span>
+                        <h3>{{ project.project_owner.user.first_name }} {{ project.project_owner.user.last_name }}</h3>
+                        <p>{{ project.project_owner.programme_of_study }}</p>
+                        <p>{{ project.project_owner.abbreviation_of_institution }}</p>
+                        {% if project.has_details %}
+                        <a href="{% url 'updateProjectDetail' project.id %}"><p class="the-view the-edits"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z"></path></svg> Edit Campaign</p></a>
+                        {% else %}
+                        <a href="{% url 'createProjectDetail' project.id %}"><p class="the-view the-edits"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z"></path></svg> Add Campaign details</p></a>
+                        {% endif %}
+                    </span>
+                </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+  </section>
+</main>
+
+{% endblock content %}

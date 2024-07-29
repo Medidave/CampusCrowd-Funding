@@ -1,0 +1,77 @@
+{% extends 'main.html' %} 
+
+{% load static %} 
+
+{% block content %}
+
+<main class="main-element">
+    <section class="main-page flex-main-page create-campaign">
+      
+      {% include 'vertical_navigation.html' %}
+  
+      <div class="template">
+        <section class="formPage my-xl">
+
+            <div class="content-box">
+                <div class="formWrapper">
+
+                    <div class="auth__header text-center reset-pass-logo-and-text-flexed">
+                        <img src="{% static 'images/camp3.png' %}" alt="icon" class="reset-password-image" />
+                        <h2>CampusCrowd</h2>
+                    </div>
+                    
+                    {% if 'project_detail' %}
+                    <form class="form profile-form" method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="new">
+                          
+                            <Label for="formInput#text new1" class>Problem Statment</Label>
+                            <textarea name="problem_statment" class="update" rows="10" required >{{ project_to_update.problem_statment }}</textarea>
+
+                            <Label for="formInput#text new1">Proposed Solution</Label>
+                            <textarea name="proposed_solution" class="update" rows="20" required >{{ project_to_update.proposed_solution }}</textarea>
+
+                            <Label for="formInput#text">market</Label>
+                            <textarea name="market" class="update" rows="10"  >{{ project_to_update.market }}</textarea>
+
+                            <Label for="formInput#text">Competition</Label>
+                            <textarea name="competition" class="update" rows="10"  >{{ project_to_update.competition }}</textarea>
+
+                            <Label for="formInput#text">Why You</Label>
+                            <textarea name="Why_you" class="update" rows="10"  >{{ project_to_update.Why_you }}</textarea>
+
+                            <Label for="formInput#text">Financing</Label>
+                            <textarea name="financing" class="update" rows="10"  >{{ project_to_update.financing }}</textarea>
+
+                        </div>
+
+                            <input class="btn1 btn1--sub btn1--lg  my-md" type="submit" value="Submit" />
+                    </form>
+
+                    {% else %}
+                    <form class="form profile-form" method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="new">
+                            <Label for="formInput#text">Update Title</Label>
+                            <input type="text" class="form-control updates" id="text" required name="title" placeholder="Enter title" value="{{ project_to_update.title }}">
+
+                            <Label for="formInput#text">Update</Label>
+                            <textarea name="update" class="update" rows="20" required placeholder="About the update">{{ project_to_update.update }}</textarea>
+
+                            <Label for="formInput#text">Update Number</Label>
+                            <input type="number" class="form-control dave updates" id="email" name="number" required ="example 01" value="{{ project_to_update.update_number }}">       
+                        
+                        </div>
+
+                            <input class="btn1 btn1--sub btn1--lg  my-md" type="submit" value="Submit" />
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+      </div>
+
+    </section>
+</main>
+
+{% endblock content %}
